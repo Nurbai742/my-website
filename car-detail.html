@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="kg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали автомобиля - AutoPremium</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .car-detail-page {
+      padding: 40px 0;
+      min-height: calc(100vh - 100px);
+    }
+    
+    .back-button {
+      margin-bottom: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .back-button:hover {
+      gap: 12px;
+    }
+    
+    .car-detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .car-gallery {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: 400px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .car-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    
+    .thumbnail {
+      width: 100%;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: var(--transition);
+    }
+    
+    .thumbnail:hover,
+    .thumbnail.active {
+      border-color: var(--primary-color);
+    }
+    
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .car-detail-info {
+      background: var(--white);
+      padding: 32px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .car-detail-header {
+      margin-bottom: 24px;
+    }
+    
+    .car-detail-header h1 {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+    
+    .car-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--warning-color);
+    }
+    
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 24px;
+      background: var(--light-gray);
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+    
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .spec-label {
+      font-size: 13px;
+      color: var(--medium-gray);
+    }
+    
+    .spec-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .contact-card {
+      background: var(--light-gray);
+      padding: 24px;
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+    
+    .contact-card h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--dark-color);
+    }
+    
+    .contact-item i {
+      color: var(--primary-color);
+      width: 20px;
+    }
+    
+    .detail-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+    
+    .detail-card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .detail-card h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    
+    .detail-card ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .detail-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--dark-color);
+    }
+    
+    .detail-card ul li i {
+      color: var(--success-color);
+      margin-top: 2px;
+    }
+    
+    @media (max-width: 1024px) {
+      .car-detail-layout {
+        grid-template-columns: 1fr;
+      }
+      
+      .car-gallery {
+        position: static;
+      }
+      
+      .detail-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <a href="index.html" class="logo">AutoPremium</a>
+        
+        <nav class="nav">
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        
+        <div class="contact-info">
+          <span class="phone">+996707752004</span>
+          <button class="btn btn-outline" onclick="openCallbackModal()">Заказать звонок</button>
+        </div>
+        
+        <button class="burger-menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Car Detail Page -->
+  <main class="car-detail-page" id="carDetailContainer">
+    <div class="container">
+      <a href="catalog.html" class="back-button" onclick="goBackToCatalog(); return false;">
+        <i class="fas fa-arrow-left"></i>
+        Назад к каталогу
+      </a>
+      
+      <div class="car-detail-layout">
+        <!-- Галерея изображений -->
+        <div class="car-gallery">
+          <div class="main-image">
+            <img id="mainImage" src="" alt="">
+          </div>
+          <div class="car-thumbnails" id="thumbnails"></div>
+        </div>
+        
+        <!-- Информация об автомобиле -->
+        <div class="car-detail-info">
+          <div class="car-detail-header">
+            <div class="car-meta">
+              <span class="badge" id="statusBadge"></span>
+              <span class="badge badge-year" id="carCategory"></span>
+            </div>
+            <h1 id="carName"></h1>
+            <p style="color: var(--medium-gray);" id="carBrand"></p>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span style="color: var(--medium-gray);">(24 отзыва)</span>
+            </div>
+          </div>
+          
+          <div>
+            <div class="car-price">
+              <span class="current-price" id="currentPrice"></span>
+              <div id="oldPriceContainer"></div>
+            </div>
+            <p class="monthly-payment" id="monthlyPayment"></p>
+          </div>
+          
+          <div class="specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Год выпуска</span>
+              <span class="spec-value" id="specYear"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Пробег</span>
+              <span class="spec-value" id="specMileage"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Двигатель</span>
+              <span class="spec-value" id="specEngine"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">КПП</span>
+              <span class="spec-value" id="specTransmission"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Топливо</span>
+              <span class="spec-value" id="specFuelType"></span>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn btn-primary" id="testDriveBtn">
+              <i class="fas fa-car"></i> Тест-драйв
+            </button>
+            <a href="tel:+9967077520044951234567" class="btn btn-secondary">
+              <i class="fas fa-phone"></i> Позвонить
+            </a>
+          </div>
+          
+          <div class="contact-card">
+            <h3>Контактная информация</h3>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+996707752004</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@autopremium.kg</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Ош,ул. Новои 38</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Пн-Вс: 09:00-21:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Дополнительная информация -->
+      <div class="detail-cards">
+        <div class="detail-card">
+          <h3>Комплектация и опции</h3>
+          <ul id="featuresList"></ul>
+        </div>
+        
+        <div class="detail-card">
+          <h3>Условия покупки</h3>
+          <ul>
+            <li><i class="fas fa-check"></i> Кредит от 0.1% годовых</li>
+            <li><i class="fas fa-check"></i> Trade-in с выгодой</li>
+            <li><i class="fas fa-check"></i> Гарантия 3 года</li>
+            <li><i class="fas fa-check"></i> Бесплатное ТО 2 года</li>
+            <li><i class="fas fa-check"></i> Страхование КАСКО</li>
+            <li><i class="fas fa-check"></i> Техосмотр в подарок</li>
+            <li><i class="fas fa-check"></i> Помощь в регистрации</li>
+            <li><i class="fas fa-check"></i> Доставка по России</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Модальное окно тест-драйва -->
+  <div id="testDriveModal" class="modal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('testDriveModal')">&times;</button>
+      <h2>Запись на тест-драйв</h2>
+      
+      <div class="modal-car-info">
+        <img id="modalCarImage" src="" alt="">
+        <h3 id="modalCarName"></h3>
+      </div>
+      
+      <form id="testDriveForm">
+        <div class="form-group">
+          <label for="tdName">Имя *</label>
+          <input type="text" id="tdName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="tdPhone">Телефон *</label>
+          <input type="tel" id="tdPhone" required placeholder="+996707752004">
+        </div>
+        
+        <div class="form-group">
+          <label for="tdEmail">Email</label>
+          <input type="email" id="tdEmail">
+        </div>
+        
+        <div class="form-group">
+          <label for="tdDate">Дата и время</label>
+          <select id="tdDate">
+            <option>Завтра 10:00</option>
+            <option>Завтра 14:00</option>
+            <option>Послезавтра 10:00</option>
+            <option>Послезавтра 14:00</option>
+            <option>В течение недели</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="tdComment">Комментарий</label>
+          <textarea id="tdComment" rows="3"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/car-detail.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>

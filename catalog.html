@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="kg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог автомобилей - AutoPremium</title>
+  <meta name="description" content="Каталог автомобилей AutoPremium. Выбирайте из 32 моделей различных брендов с удобной фильтрацией.">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .catalog-page {
+      padding: 40px 0;
+      min-height: calc(100vh - 200px);
+    }
+    
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+    }
+    
+    .filters-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+    
+    .catalog-header {
+      margin-bottom: 32px;
+    }
+    
+    .catalog-header h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    
+    .catalog-header p {
+      color: var(--medium-gray);
+      text-align: left;
+    }
+    
+    @media (max-width: 1024px) {
+      .catalog-layout {
+        grid-template-columns: 1fr;
+      }
+      
+      .filters-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <a href="index.html" class="logo">AutoPremium</a>
+        
+        <nav class="nav">
+          <ul>
+            <li><a href="catalog.html" style="color: var(--primary-color);">Каталог</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        
+        <div class="search-box">
+          <input type="search" id="searchInput" placeholder="Поиск автомобилей...">
+          <i class="fas fa-search"></i>
+        </div>
+        
+        <div class="contact-info">
+          <span class="phone">+996707752004</span>
+          <button class="btn btn-outline" onclick="openCallbackModal()">Заказать звонок</button>
+        </div>
+        
+        <button class="burger-menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Catalog Page -->
+  <main class="catalog-page">
+    <div class="container">
+      <div class="catalog-layout">
+        <!-- Боковая панель фильтров -->
+        <aside class="filters-sidebar">
+          <h3>Фильтры</h3>
+          
+          <div class="filter-group">
+            <h4>Бренд</h4>
+            <div id="brandFilters"></div>
+          </div>
+          
+          <div class="filter-group">
+            <h4>Категория</h4>
+            <div id="categoryFilters"></div>
+          </div>
+          
+          <button onclick="resetFilters()" class="btn btn-outline" style="width: 100%;">
+            Сбросить фильтры
+          </button>
+        </aside>
+        
+        <!-- Основной контент -->
+        <div class="catalog-content">
+          <div class="catalog-header">
+            <h2 id="catalogTitle">Все автомобили</h2>
+            <p id="carsCount">Найдено: 32 автомобиля</p>
+          </div>
+          
+          <div class="cars-grid" id="catalogCarsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Колонка 1: О компании -->
+        <div class="footer-column">
+          <div class="logo">AutoPremium</div>
+          <p>Ведущий автосалон премиум-класса с 15-летней историей успеха</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <!-- Колонка 2: Навигация -->
+        <div class="footer-column">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        
+        <!-- Колонка 3: Услуги -->
+        <div class="footer-column">
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="services.html">Кредитование</a></li>
+            <li><a href="services.html">Trade-in</a></li>
+            <li><a href="services.html">Страхование</a></li>
+            <li><a href="services.html">Сервис</a></li>
+          </ul>
+        </div>
+        
+        <!-- Колонка 4: Контакты -->
+        <div class="footer-column">
+          <h4>Контакты</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> +996707752004</li>
+            <li><i class="fas fa-envelope"></i> info@autopremium.kg</li>
+            <li><i class="fas fa-map-marker-alt"></i> Ош, ул. Автомобильная, 15</li>
+            <li><i class="fas fa-clock"></i> Пн-Вс: 09:00-21:00</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 AutoPremium. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно тест-драйва -->
+  <div id="testDriveModal" class="modal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('testDriveModal')">&times;</button>
+      <h2>Запись на тест-драйв</h2>
+      
+      <div class="modal-car-info">
+        <img id="modalCarImage" src="" alt="">
+        <h3 id="modalCarName"></h3>
+      </div>
+      
+      <form id="testDriveForm">
+        <div class="form-group">
+          <label for="tdName">Имя *</label>
+          <input type="text" id="tdName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="tdPhone">Телефон *</label>
+          <input type="tel" id="tdPhone" required placeholder="+996">
+        </div>
+        
+        <div class="form-group">
+          <label for="tdEmail">Email</label>
+          <input type="email" id="tdEmail">
+        </div>
+        
+        <div class="form-group">
+          <label for="tdDate">Дата и время</label>
+          <select id="tdDate">
+            <option>Завтра 10:00</option>
+            <option>Завтра 14:00</option>
+            <option>Послезавтра 10:00</option>
+            <option>Послезавтра 14:00</option>
+            <option>В течение недели</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="tdComment">Комментарий</label>
+          <textarea id="tdComment" rows="3"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>

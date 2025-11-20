@@ -1,0 +1,246 @@
+/* AutoPremium - Адаптивные стили */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+
+  section h2 {
+    font-size: 32px;
+  }
+
+  .cars-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .search-box input {
+    width: 200px;
+  }
+
+  .nav ul {
+    gap: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .header-top {
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    display: none;
+    width: 100%;
+    order: 5;
+  }
+
+  .nav.mobile-open {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  .search-box {
+    order: 3;
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .contact-info {
+    order: 4;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .hero-banner {
+    min-height: 400px;
+    padding: 60px 20px;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  section h2 {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .cars-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .category-tabs {
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .newsletter form {
+    flex-direction: column;
+  }
+
+  .modal-content {
+    padding: 30px 20px;
+  }
+
+  .toast {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    min-width: auto;
+  }
+
+  /* Catalog Page */
+  .catalog-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .filters-sidebar {
+    position: static !important;
+  }
+
+  /* Car Detail Page */
+  .car-detail-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .car-detail-info {
+    padding: 20px !important;
+  }
+
+  .car-gallery {
+    height: 300px !important;
+  }
+
+  .car-thumbnails {
+    gap: 8px !important;
+  }
+
+  .thumbnail {
+    width: 60px !important;
+    height: 45px !important;
+  }
+
+  /* Services Page */
+  .calculator-card {
+    padding: 24px !important;
+  }
+
+  .calculator-result {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About Page */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contacts Page */
+  .contacts-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .locations-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .departments-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 22px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  section h2 {
+    font-size: 24px;
+  }
+
+  .current-price {
+    font-size: 20px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .brands-grid {
+    grid-template-columns: 1fr;
+  }
+}

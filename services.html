@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="kg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наши услуги - AutoPremium</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .services-page {
+      padding: 60px 0;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .page-header h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .page-header p {
+      font-size: 18px;
+      color: var(--medium-gray);
+    }
+    
+    .calculator-section {
+      background: var(--light-gray);
+      padding: 60px 0;
+      margin-bottom: 60px;
+    }
+    
+    .calculator-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .calculator-card h2 {
+      font-size: 32px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    
+    .calculator-inputs {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .calculator-result {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 24px;
+      background: var(--light-gray);
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    
+    .result-item {
+      text-align: center;
+    }
+    
+    .result-label {
+      font-size: 14px;
+      color: var(--medium-gray);
+      margin-bottom: 8px;
+    }
+    
+    .result-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .service-detail-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .service-detail-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    .service-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .service-image i {
+      font-size: 64px;
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .service-content {
+      padding: 32px;
+    }
+    
+    .service-content h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    
+    .service-content p {
+      color: var(--medium-gray);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    
+    .service-content ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    
+    .service-content ul li {
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+      color: var(--dark-color);
+    }
+    
+    .service-content ul li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success-color);
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .why-choose {
+      background: var(--light-gray);
+      padding: 60px 0;
+    }
+    
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+    
+    .why-item {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--white);
+      border-radius: var(--border-radius);
+    }
+    
+    .why-item i {
+      font-size: 48px;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+    }
+    
+    .why-item h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .why-item p {
+      color: var(--medium-gray);
+      font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+      .calculator-result {
+        grid-template-columns: 1fr;
+      }
+      
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <a href="index.html" class="logo">AutoPremium</a>
+        
+        <nav class="nav">
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html" style="color: var(--primary-color);">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+        
+        <div class="contact-info">
+          <span class="phone">+996707752004</span>
+          <button class="btn btn-outline" onclick="openCallbackModal()">Заказать звонок</button>
+        </div>
+        
+        <button class="burger-menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services Page -->
+  <main class="services-page">
+    <div class="container">
+      <div class="page-header">
+        <h1>Наши услуги</h1>
+        <p>Комплексное обслуживание на всех этапах покупки автомобиля</p>
+      </div>
+    </div>
+    
+    <!-- Кредитный калькулятор -->
+    <section class="calculator-section">
+      <div class="container">
+        <div class="calculator-card">
+          <h2>Кредитный калькулятор</h2>
+          
+          <div class="calculator-inputs">
+            <div class="form-group">
+              <label for="loanAmount">Стоимость автомобиля (C)</label>
+              <input type="number" id="loanAmount" step="100000" min="0">
+            </div>
+            
+            <div class="form-group">
+              <label for="downPayment">Первоначальный взнос (C)</label>
+              <input type="number" id="downPayment" step="50000" min="0">
+            </div>
+            
+            <div class="form-group">
+              <label for="loanTerm">Срок кредита</label>
+              <select id="loanTerm">
+                <option value="12">1 год (12 месяцев)</option>
+                <option value="24">2 года (24 месяца)</option>
+                <option value="36">3 года (36 месяцев)</option>
+                <option value="48">4 года (48 месяцев)</option>
+                <option value="60" selected>5 лет (60 месяцев)</option>
+                <option value="72">6 лет (72 месяца)</option>
+                <option value="84">7 лет (84 месяца)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="calculator-result">
+            <div class="result-item">
+              <div class="result-label">Ежемесячный платеж</div>
+              <div class="result-value" id="monthlyPayment">0 </div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Общая сумма</div>
+              <div class="result-value" id="totalAmount">0 </div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Переплата</div>
+              <div class="result-value" id="totalInterest">0 </div>
+            </div>
+          </div>
+          
+          <button class="btn btn-primary" style="width: 100%;" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">
+            Подать заявку на кредит
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Услуги -->
+    <div class="container">
+      <div class="services-grid">
+        <!-- Автокредитование -->
+        <div class="service-detail-card">
+          <div class="service-image">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <div class="service-content">
+            <h3>Автокредитование</h3>
+            <p>Выгодные условия кредитования от ведущих банков-партнеров</p>
+            <ul>
+              <li>Ставка от 0.1% годовых</li>
+              <li>Срок до 7 лет</li>
+              <li>Первоначальный взнос от 0%</li>
+              <li>Одобрение за 30 минут</li>
+              <li>Без справок о доходах</li>
+            </ul>
+            <button class="btn btn-primary" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">Оставить заявку</button>
+          </div>
+        </div>
+        
+        <!-- Trade-in -->
+        <div class="service-detail-card">
+          <div class="service-image">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <div class="service-content">
+            <h3>Trade-in</h3>
+            <p>Обменяйте свой автомобиль с выгодой на новый</p>
+            <ul>
+              <li>Оценка авто за 15 минут</li>
+              <li>Максимальная цена выкупа</li>
+              <li>Юридическая чистота</li>
+              <li>Без скрытых комиссий</li>
+              <li>Помощь в оформлении</li>
+            </ul>
+            <button class="btn btn-primary" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">Оценить автомобиль</button>
+          </div>
+        </div>
+        
+        <!-- Лизинг -->
+        <div class="service-detail-card">
+          <div class="service-image">
+            <i class="fas fa-car"></i>
+          </div>
+          <div class="service-content">
+            <h3>Лизинг</h3>
+            <p>Выгодные программы лизинга для юридических лиц</p>
+            <ul>
+              <li>Для компаний и ИП</li>
+              <li>НДС к вычету</li>
+              <li>Без залога и поручителей</li>
+              <li>Гибкий график платежей</li>
+              <li>Налоговая оптимизация</li>
+            </ul>
+            <button class="btn btn-primary" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">Узнать условия</button>
+          </div>
+        </div>
+        
+        <!-- Страхование -->
+        <div class="service-detail-card">
+          <div class="service-image">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="service-content">
+            <h3>Страхование</h3>
+            <p>КАСКО и ОСАГО от надежных страховых компаний</p>
+            <ul>
+              <li>Лучшие тарифы</li>
+              <li>Полисы онлайн</li>
+              <li>Помощь при ДТП 24/7</li>
+              <li>Быстрое урегулирование</li>
+              <li>Выплаты без задержек</li>
+            </ul>
+            <button class="btn btn-primary" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">Рассчитать стоимость</button>
+          </div>
+        </div>
+        
+        <!-- Сервисное обслуживание -->
+        <div class="service-detail-card">
+          <div class="service-image">
+            <i class="fas fa-wrench"></i>
+          </div>
+          <div class="service-content">
+            <h3>Сервисное обслуживание</h3>
+            <p>Профессиональное обслуживание и ремонт автомобилей</p>
+            <ul>
+              <li>Оригинальные запчасти</li>
+              <li>Сертифицированные мастера</li>
+              <li>Гарантия на работы</li>
+              <li>Диагностика в подарок</li>
+              <li>Бесплатная мойка</li>
+            </ul>
+            <button class="btn btn-primary" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">Записаться на сервис</button>
+          </div>
+        </div>
+        
+        <!-- Гарантия -->
+        <div class="service-detail-card">
+          <div class="service-image">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="service-content">
+            <h3>Гарантия</h3>
+            <p>Расширенная гарантия на все автомобили</p>
+            <ul>
+              <li>До 5 лет гарантии</li>
+              <li>Покрытие всех узлов</li>
+              <li>Бесплатное ТО 2 года</li>
+              <li>Помощь на дорогах</li>
+              <li>Замена авто на ремонт</li>
+            </ul>
+            <button class="btn btn-primary" onclick="showToast('Заявка отправлена!', 'Наш менеджер свяжется с вами в ближайшее время')">Узнать подробнее</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Почему выбирают нас -->
+  <section class="why-choose">
+    <div class="container">
+      <h2>Почему выбирают AutoPremium</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <i class="fas fa-bolt"></i>
+          <h3>Быстро</h3>
+          <p>Одобрение кредита за 30 минут, оформление за 1 день</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Надежно</h3>
+          <p>15 лет на рынке, официальный дилер ведущих брендов</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-percent"></i>
+          <h3>Выгодно</h3>
+          <p>Лучшие цены, программы Trade-in и кредитования</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-star"></i>
+          <h3>Качественно</h3>
+          <p>Проверенные автомобили, гарантия качества</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="logo">AutoPremium</div>
+          <p>Ведущий автосалон премиум-класса с 15-летней историей успеха</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="services.html">Кредитование</a></li>
+            <li><a href="services.html">Trade-in</a></li>
+            <li><a href="services.html">Страхование</a></li>
+            <li><a href="services.html">Сервис</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Контакты</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> +996707752004</li>
+            <li><i class="fas fa-envelope"></i> info@autopremium.kg</li>
+            <li><i class="fas fa-map-marker-alt"></i> Ош, ул. Автомобильная, 15</li>
+            <li><i class="fas fa-clock"></i> Пн-Вс: 09:00-21:00</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 AutoPremium. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>

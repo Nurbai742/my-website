@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="kg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты - AutoPremium</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .contacts-page {
+      padding: 60px 0;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .page-header h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .contacts-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .map-placeholder {
+      width: 100%;
+      height: 400px;
+      background: var(--light-gray);
+      border-radius: var(--border-radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--medium-gray);
+      margin-bottom: 32px;
+    }
+    
+    .map-placeholder i {
+      font-size: 64px;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+    }
+    
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .location-card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .location-card h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+    }
+    
+    .location-info {
+      margin-bottom: 16px;
+    }
+    
+    .location-info p {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+      color: var(--dark-color);
+      font-size: 14px;
+    }
+    
+    .location-info i {
+      color: var(--primary-color);
+      margin-top: 2px;
+      width: 16px;
+    }
+    
+    .location-services {
+      border-top: 1px solid var(--light-gray);
+      padding-top: 16px;
+    }
+    
+    .location-services h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--dark-color);
+    }
+    
+    .location-services ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--medium-gray);
+    }
+    
+    .location-services ul li {
+      padding: 4px 0;
+    }
+    
+    .contact-form-card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .contact-form-card h3 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    
+    .quick-contacts {
+      background: var(--light-gray);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+    
+    .quick-contacts h4 {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .quick-contact-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .quick-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: var(--white);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 600;
+    }
+    
+    .quick-contact-btn:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .departments-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 60px 0;
+    }
+    
+    .department-card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    
+    .department-card i {
+      font-size: 48px;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+    }
+    
+    .department-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .department-card p {
+      color: var(--medium-gray);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .how-to-reach {
+      background: var(--light-gray);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      margin-top: 40px;
+    }
+    
+    .how-to-reach h3 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    
+    .how-to-reach-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    
+    .how-item h4 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--primary-color);
+    }
+    
+    .how-item p {
+      color: var(--dark-color);
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 1024px) {
+      .contacts-layout {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-form-card {
+        position: static;
+      }
+      
+      .locations-grid, .departments-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 32px;
+      }
+      
+      .how-to-reach-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <a href="index.html" class="logo">AutoPremium</a>
+        
+        <nav class="nav">
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html" style="color: var(--primary-color);">Контакты</a></li>
+          </ul>
+        </nav>
+        
+        <div class="contact-info">
+          <span class="phone">+996707752004</span>
+          <button class="btn btn-outline" onclick="openCallbackModal()">Заказать звонок</button>
+        </div>
+        
+        <button class="burger-menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contacts Page -->
+  <main class="contacts-page">
+    <div class="container">
+      <div class="page-header">
+        <h1>Контакты</h1>
+        <p style="color: var(--medium-gray);">Мы всегда рады вам помочь</p>
+      </div>
+      
+      <div class="contacts-layout">
+        <!-- Левая часть -->
+        <div>
+          <!-- Карта -->
+          <div class="map-placeholder">
+            <i class="fas fa-map-marker-alt"></i>
+            <p style="font-size: 18px;">Интерактивная карта</p>
+            <p style="font-size: 14px;">Ош,ул Алишерова Новои 38</p>
+          </div>
+          
+          <!-- Адреса филиалов -->
+          <div class="locations-grid">
+            <!-- Головной офис -->
+            <div class="location-card">
+              <h3>Головной офис</h3>
+              <div class="location-info">
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Ош,ул Алишерова Новои 38</span>
+                </p>
+                <p>
+                  <i class="fas fa-phone"></i>
+                  <span>+996707752004</span>
+                </p>
+                <p>
+                  <i class="fas fa-envelope"></i>
+                  <span>info@autopremium.kg</span>
+                </p>
+                <p>
+                  <i class="fas fa-clock"></i>
+                  <span>Пн-Вс: 09:00-21:00</span>
+                </p>
+              </div>
+              <div class="location-services">
+                <h4>Услуги:</h4>
+                <ul>
+                  <li>Продажа автомобилей</li>
+                  <li>Trade-in</li>
+                  <li>Сервисный центр</li>
+                  <li>Кредитование</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Филиал на Севере -->
+            <div class="location-card">
+              <h3>Филиал на Севере</h3>
+              <div class="location-info">
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Ош,ул Алишерова Новои 38</span>
+                </p>
+                <p>
+                  <i class="fas fa-phone"></i>
+                  <span>+996707752004</span>
+                </p>
+                <p>
+                  <i class="fas fa-envelope"></i>
+                  <span>north@autopremium.kg</span>
+                </p>
+                <p>
+                  <i class="fas fa-clock"></i>
+                  <span>Пн-Вс: 09:00-21:00</span>
+                </p>
+              </div>
+              <div class="location-services">
+                <h4>Услуги:</h4>
+                <ul>
+                  <li>Продажа автомобилей</li>
+                  <li>Trade-in</li>
+                  <li>Тест-драйв</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Филиал на Западе -->
+            <div class="location-card">
+              <h3>Филиал на Западе</h3>
+              <div class="location-info">
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Ош,ул Алишерова Новои 38</span>
+                </p>
+                <p>
+                  <i class="fas fa-phone"></i>
+                  <span>+996707752004</span>
+                </p>
+                <p>
+                  <i class="fas fa-envelope"></i>
+                  <span>west@autopremium.kg</span>
+                </p>
+                <p>
+                  <i class="fas fa-clock"></i>
+                  <span>Пн-Вс: 09:00-21:00</span>
+                </p>
+              </div>
+              <div class="location-services">
+                <h4>Услуги:</h4>
+                <ul>
+                  <li>Продажа автомобилей</li>
+                  <li>Сервисный центр</li>
+                  <li>Запчасти</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Правая часть - Форма обратной связи -->
+        <div>
+          <div class="contact-form-card">
+            <h3>Форма обратной связи</h3>
+            
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Имя *</label>
+                <input type="text" id="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" placeholder="+996">
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Тема</label>
+                <select id="subject">
+                  <option>Покупка автомобиля</option>
+                  <option>Тест-драйв</option>
+                  <option>Кредит</option>
+                  <option>Trade-in</option>
+                  <option>Сервис</option>
+                  <option>Другое</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Сообщение *</label>
+                <textarea id="message" rows="4" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Отправить сообщение
+              </button>
+            </form>
+            
+            <div class="quick-contacts">
+              <h4>Быстрая связь</h4>
+              <div class="quick-contact-btns">
+                <a href="tel:+9967077520044951234567" class="quick-contact-btn">
+                  <i class="fas fa-phone"></i>
+                  Позвонить
+                </a>
+                <a href="#" class="quick-contact-btn">
+                  <i class="fab fa-whatsapp"></i>
+                  WhatsApp
+                </a>
+                <a href="mailto:info@autopremium.kg" class="quick-contact-btn">
+                  <i class="fas fa-envelope"></i>
+                  Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Наши отделы -->
+      <div class="departments-grid">
+        <div class="department-card">
+          <i class="fas fa-shopping-cart"></i>
+          <h3>Отдел продаж</h3>
+          <p>Поможем выбрать идеальный автомобиль</p>
+          <p style="color: var(--primary-color); font-weight: 600;">+996707752004</p>
+        </div>
+        
+        <div class="department-card">
+          <i class="fas fa-wrench"></i>
+          <h3>Сервисный центр</h3>
+          <p>Профессиональное обслуживание вашего авто</p>
+          <p style="color: var(--primary-color); font-weight: 600;">+996707752004</p>
+        </div>
+        
+        <div class="department-card">
+          <i class="fas fa-headset"></i>
+          <h3>Клиентский сервис</h3>
+          <p>Всегда готовы ответить на ваши вопросы</p>
+          <p style="color: var(--primary-color); font-weight: 600;">+996707752004</p>
+        </div>
+      </div>
+      
+      <!-- Как добраться -->
+      <div class="how-to-reach">
+        <h3>Как добраться</h3>
+        <div class="how-to-reach-grid">
+          <div class="how-item">
+            <h4><i class="fas fa-car"></i> На автомобиле</h4>
+            <p>
+              Удобные подъездные пути со всех направлений. 
+              Бесплатная охраняемая парковка на 100 мест.
+            </p>
+          </div>
+          <div class="how-item">
+            <h4><i class="fas fa-clock"></i> Режим работы</h4>
+            <p>
+              Понедельник - Воскресенье: 09:00 - 21:00<br>
+              Без выходных и праздничных дней<br>
+              Предварительная запись не требуется
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="logo">AutoPremium</div>
+          <p>Ведущий автосалон премиум-класса с 15-летней историей успеха</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="services.html">Кредитование</a></li>
+            <li><a href="services.html">Trade-in</a></li>
+            <li><a href="services.html">Страхование</a></li>
+            <li><a href="services.html">Сервис</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Контакты</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> +996707752004</li>
+            <li><i class="fas fa-envelope"></i> info@autopremium.kg</li>
+            <li><i class="fas fa-map-marker-alt"></i> Ош,ул Алишерова Новои 38</li>
+            <li><i class="fas fa-clock"></i> Пн-Вс: 09:00-21:00</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 AutoPremium. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>
